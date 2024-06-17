@@ -13,7 +13,7 @@
 // - Create a form to collect a list my ressources
 // Settings page should allow the choice to add/update the list of projects along with
 // the list of tools.
-
+'use client';
 import { DeleteIcon } from '@/app/ui/icons/DeleteIcon';
 import { EditIcon } from '@/app/ui/icons/EditIcon';
 import { EyeIcon } from '@/app/ui/icons/EyeIcon';
@@ -118,7 +118,7 @@ const statusColorMap: StatusColorMap = {
   vacation: 'warning',
 };
 
-export default async function Page() {
+export default function Page() {
   // const tools = await fetchTools();
 
   const renderCell = (user: User, columnKey: Key) => {
