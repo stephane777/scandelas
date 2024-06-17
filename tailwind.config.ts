@@ -1,19 +1,18 @@
+import { nextui } from '@nextui-org/theme';
 import type { Config } from 'tailwindcss';
 
 // If you want to support toggling dark mode manually
 // instead of relying on the operating system preference,
 //  use the selector strategy instead of the media strategy:
 
-import flowbite from 'flowbite/plugin';
 const config: Config = {
-  darkMode: 'selector',
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    // './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    // './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/flowbite-react/lib/**/*.js',
-    './node_modules/flowbite/**/*.js',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './public/**/*.html',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -23,6 +22,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [flowbite],
+  plugins: [nextui()],
 };
 export default config;
