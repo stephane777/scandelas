@@ -6,6 +6,14 @@ export function ThemeSwitcher() {
   const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
+  /**
+   * The reason why we need a mounted state is to prevent a difference between the React tree
+   * that was pre-rendered from the server and the React tree that was rendered during the first render
+   * in the browser (hydration).
+   * cf: https://nextjs.org/docs/messages/react-hydration-error
+   *
+   */
+
   useEffect(() => {
     setMounted(true);
   }, []);
