@@ -1,5 +1,6 @@
 'use client';
 
+import { ChevronDown } from '@/app/ui/icons/ChevronDown';
 import {
   Navbar,
   NavbarBrand,
@@ -9,7 +10,8 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from '@nextui-org/navbar';
-import { Button, Link } from '@nextui-org/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
+import Link from 'next/link';
 import React from 'react';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 // import {  Button} from "@nextui-org/react";
@@ -44,15 +46,68 @@ export default function Header() {
       <NavbarContent className="hidden w-full gap-4 md:flex" justify="center">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="text-2xl font-bold text-inherit">S.CANDELAS _</p>
-        </NavbarBrand>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Settings
+          <Link color="foreground" href="/">
+            <p className="text-2xl font-bold text-inherit">S.CANDELAS _</p>
           </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
+        </NavbarBrand>
+
+        <Dropdown>
+          <NavbarItem className="flex items-center">
+            <Link href="/settings" aria-current="page">
+              Settings
+            </Link>
+            <DropdownTrigger>
+              <Button
+                isIconOnly
+                // disableRipple
+                className="w-2 bg-transparent p-0 data-[hover=true]:bg-transparent"
+                // endContent={<ChevronDown fill="currentColor" size={16} />}
+                // radius="sm"
+                variant="light"
+              >
+                <ChevronDown fill="currentColor" size={16} />
+              </Button>
+            </DropdownTrigger>
+            {/* <Link color="foreground" href="/settings">
+            Settings
+          </Link> */}
+          </NavbarItem>
+          <DropdownMenu
+            aria-label="ACME features"
+            className="w-[140px]"
+            itemClasses={{
+              base: 'gap-4',
+            }}
+          >
+            <DropdownItem
+              key="projects"
+              // description="projects"
+              // startContent={}
+            >
+              <Link color="foreground" href="/settings/projects">
+                Projects
+              </Link>
+            </DropdownItem>
+            <DropdownItem
+              key="tools"
+              // description="tools"
+              // startContent={}
+            >
+              <Link color="foreground" href="/settings/tools">
+                Tools
+              </Link>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+
+        <NavbarItem
+        // isActive
+        >
+          {/* <Link href="#" aria-current="page"> */}
+          <Link
+            href="/about"
+            // aria-current="page"
+          >
             About
           </Link>
         </NavbarItem>
@@ -87,7 +142,6 @@ export default function Header() {
                 'foreground'
               }
               href="#"
-              size="lg"
             >
               {item}
             </Link>
