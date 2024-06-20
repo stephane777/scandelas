@@ -7,7 +7,7 @@ export async function fetchTools() {
   noStore(); // prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
   try {
-    await new Promise((res) => setTimeout(res, 8000));
+    // await new Promise((res) => setTimeout(res, 8000));
     const data = await sql<Tool>`
         SELECT
         sc_tools.id,
