@@ -1,4 +1,4 @@
-import { fetchFilteredTool } from '@/app/lib/data';
+import { fetchFilteredTools } from '@/app/lib/data';
 
 export default async function ToolsTable({
   query,
@@ -7,8 +7,7 @@ export default async function ToolsTable({
   query: string;
   currentPage: number;
 }) {
-  //   const tools = await fetchTools();
-  const tools = await fetchFilteredTool(query, currentPage);
+  const tools = await fetchFilteredTools(query, currentPage);
 
   return (
     <div className="relative flex justify-center overflow-x-auto">
@@ -22,7 +21,7 @@ export default async function ToolsTable({
           </tr>
         </thead>
 
-        <tbody className="bg-grey-light flex h-56 w-full flex-col items-center justify-between overflow-y-scroll">
+        <tbody className="bg-grey-light flex h-56 w-full flex-col overflow-y-auto">
           {tools.map((tool) => {
             return (
               <tr
