@@ -56,7 +56,7 @@ export async function fetchProjects() {
   }
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 5;
 export async function fetchToolsPages(query: string) {
   noStore();
   try {
@@ -76,7 +76,7 @@ export async function fetchToolsPages(query: string) {
   }
 }
 
-export async function fetchFilteredTool(query: string, currentPage: number) {
+export async function fetchFilteredTools(query: string, currentPage: number) {
   noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
