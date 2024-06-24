@@ -1,4 +1,7 @@
+import { DeleteIcon } from '@/app/ui/icons/DeleteIcon';
+import { EditIcon } from '@/app/ui/icons/EditIcon';
 import { PlusIcon } from '@heroicons/react/24/outline';
+
 import Link from 'next/link';
 // import { deleteInvoice } from '@/app/lib/actions';
 
@@ -13,26 +16,40 @@ export function CreateButton({ pathToCreate, name }: { pathToCreate: string; nam
   );
 }
 
-// export function UpdateTool({ id }: { id: string }) {
-//   return (
-//     <Link
-//       // href="/dashboard/invoices"
-//       href={`/dashboard/invoices/${id}/edit`}
-//       className="rounded-md border p-2 hover:bg-gray-100"
-//     >
-//       <PencilIcon className="w-5" />
-//     </Link>
-//   );
-// }
+export function UpdateTool({ id }: { id: string }) {
+  return (
+    <Link href={`/settings/tools/${id}/edit`}>
+      <EditIcon className="w-5" />
+    </Link>
+  );
+}
 
-// export function DeleteTool({ id }: { id: string }) {
-//   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
-//   return (
-//     <form action={deleteInvoiceWithId}>
-//       <button className="rounded-md border p-2 hover:bg-gray-100">
-//         <span className="sr-only">Delete</span>
-//         <TrashIcon className="w-5" />
-//       </button>
-//     </form>
-//   );
-// }
+export function UpdateProject({ id }: { id: string }) {
+  return (
+    <Link href={`/settings/projects/${id}/edit`}>
+      <EditIcon className="w-5" />
+    </Link>
+  );
+}
+
+export function DeleteTool({ id }: { id: string }) {
+  // const deleteToolWithId = deleteTool.bind(null, id);
+  return (
+    // <form action={deleteToolWithId}>
+    <button>
+      {/* <span className="sr-only">Delete</span> */}
+      <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
+    </button>
+  );
+}
+
+export function DeleteProject({ id }: { id: string }) {
+  // const deleteProjectWithId = deleteProject.bind(null, id);
+  return (
+    // <form action={deleteProjectWithId}>
+    <button>
+      {/* <span className="sr-only">Delete</span> */}
+      <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
+    </button>
+  );
+}
