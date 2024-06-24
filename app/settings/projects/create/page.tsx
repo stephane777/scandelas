@@ -1,8 +1,8 @@
 // import Form from '@/app/ui/invoices/create-form';
 // import { fetchCustomers } from '@/app/lib/data';
 import { fetchTools } from '@/app/lib/data';
+import FormProject from '@/app/ui/Projects/create-project';
 import Breadcrumbs from '@/app/ui/Settings/breadcrumbs';
-import FormProject from '@/app/ui/Settings/create-project';
 export default async function Page() {
   const tools = await fetchTools();
 
