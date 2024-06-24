@@ -11,7 +11,6 @@ export default async function ToolsTab() {
             <th className="w-6/12 p-3">Tools UUID</th>
             <th className="w-3/12 p-3">names</th>
             <th className="w-3/12 p-3">versions</th>
-            <th className="w-3/12 p-3">actions</th>
           </tr>
         </thead>
 
@@ -31,20 +30,6 @@ export default async function ToolsTab() {
 
                 <td className="flex w-3/12 justify-start p-3">{tool.name}</td>
                 <td className="flex w-3/12 justify-start p-3">{tool.version}</td>
-                <td className="flex w-3/12 justify-start space-x-3 p-3">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Edit
-                  </a>
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Delete
-                  </a>
-                </td>
               </tr>
             );
           })}
