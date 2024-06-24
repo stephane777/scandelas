@@ -100,3 +100,23 @@ export async function fetchFilteredTools(query: string, currentPage: number) {
     throw new Error('Failed to fetch tools.');
   }
 }
+
+export async function fetchToolById(id: string) {
+  noStore();
+  try {
+    const data = await sql<Tool>`
+      SELECT
+        t.id,
+        t.name,
+        t.version
+      FROM sc_tools as t
+      WHERE t.id = ${id}
+    `;
+    const tool = data.rows;
+
+    return tool[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error(`Failed to fetch tool with id: ${id}.`);
+  }
+}
