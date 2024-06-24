@@ -3,10 +3,9 @@ export const EditIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<S
     aria-hidden="true"
     fill="none"
     focusable="false"
-    height="1em"
     role="presentation"
+    width="20"
     viewBox="0 0 20 20"
-    width="1em"
     {...props}
   >
     <path
