@@ -79,23 +79,25 @@ export default function Header() {
               base: 'gap-4',
             }}
           >
-            <DropdownItem
-              key="projects"
-              // description="projects"
-              // startContent={}
-              textValue="tools"
-            >
-              <Link color="foreground" href="/settings/projects">
+            <DropdownItem key="projects" textValue="tools">
+              <Link
+                color="foreground"
+                href="/settings/projects"
+                // description="projects"
+                // startContent={}
+                className="flex"
+              >
                 Projects
               </Link>
             </DropdownItem>
-            <DropdownItem
-              key="tools"
-              textValue="Tools"
-              // description="tools"
-              // startContent={}
-            >
-              <Link color="foreground" href="/settings/tools">
+            <DropdownItem key="tools" textValue="Tools">
+              <Link
+                color="foreground"
+                href="/settings/tools"
+                className="flex"
+                // description="tools"
+                // startContent={}
+              >
                 Tools
               </Link>
             </DropdownItem>
