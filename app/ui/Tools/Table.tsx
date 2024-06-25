@@ -1,4 +1,5 @@
 import { fetchFilteredTools } from '@/app/lib/data';
+import { DeleteTool, UpdateTool } from '@/app/ui/Settings/Buttons';
 
 export default async function ToolsTable({
   query,
@@ -17,11 +18,11 @@ export default async function ToolsTable({
             <th className="w-6/12 p-3">Tools UUID</th>
             <th className="w-3/12 p-3">names</th>
             <th className="w-3/12 p-3">versions</th>
-            <th className="w-3/12 p-3">actions</th>
+            <th className="flex w-3/12 justify-center p-3">actions</th>
           </tr>
         </thead>
 
-        <tbody className="bg-grey-light flex h-56 w-full flex-col overflow-y-auto">
+        <tbody className="bg-grey-light flex h-[14.5rem] w-full flex-col overflow-y-auto">
           {tools.map((tool) => {
             return (
               <tr
@@ -37,19 +38,9 @@ export default async function ToolsTable({
 
                 <td className="flex w-3/12 justify-start p-3">{tool.name}</td>
                 <td className="flex w-3/12 justify-start p-3">{tool.version}</td>
-                <td className="flex w-3/12 justify-start space-x-3 p-3">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Edit
-                  </a>
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Delete
-                  </a>
+                <td className="flex w-3/12 justify-center space-x-3 p-3">
+                  <UpdateTool id={tool.id} />
+                  <DeleteTool id={tool.id} />
                 </td>
               </tr>
             );

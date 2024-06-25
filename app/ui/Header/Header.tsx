@@ -1,5 +1,6 @@
 'use client';
 
+import { ThemeSwitcher } from '@/app/ui/ThemeSwitcher';
 import { ChevronDown } from '@/app/ui/icons/ChevronDown';
 import {
   Navbar,
@@ -13,7 +14,6 @@ import {
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 import Link from 'next/link';
 import React from 'react';
-import { ThemeSwitcher } from '../ThemeSwitcher';
 // import {  Button} from "@nextui-org/react";
 // import {AcmeLogo} from "./AcmeLogo.jsx";
 
@@ -83,6 +83,7 @@ export default function Header() {
               key="projects"
               // description="projects"
               // startContent={}
+              textValue="tools"
             >
               <Link color="foreground" href="/settings/projects">
                 Projects
@@ -90,6 +91,7 @@ export default function Header() {
             </DropdownItem>
             <DropdownItem
               key="tools"
+              textValue="Tools"
               // description="tools"
               // startContent={}
             >

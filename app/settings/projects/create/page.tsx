@@ -1,3 +1,25 @@
+// import Form from '@/app/ui/invoices/create-form';
+// import { fetchCustomers } from '@/app/lib/data';
+import { fetchTools } from '@/app/lib/data';
+import FormProject from '@/app/ui/Projects/create-project';
+import Breadcrumbs from '@/app/ui/Settings/breadcrumbs';
 export default async function Page() {
-  return <div>{'Create project'}</div>;
+  const tools = await fetchTools();
+
+  return (
+    <main className="flex-column mx-auto min-h-screen max-w-6xl items-center justify-center p-6">
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: 'Projects', href: '/settings/projects' },
+          {
+            label: 'Create Project',
+            href: '/settings/projects/create',
+            active: true,
+          },
+        ]}
+      />
+
+      <FormProject tools={tools} />
+    </main>
+  );
 }
