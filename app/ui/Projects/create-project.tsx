@@ -163,12 +163,12 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
             <select
               id="bundler"
               name="bundler"
-              defaultValue={'Select a bundler'}
+              defaultValue={''}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2"
               aria-describedby="bundler-error"
             >
-              <option value="" disabled className="text-gray-500 dark:text-gray-400">
-                Select a bundler
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -201,8 +201,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="test_runner-error"
             >
-              <option value="" disabled>
-                Select a test Runner
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -235,8 +235,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="e2e-error"
             >
-              <option value="" disabled>
-                Select an end to end test
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -269,8 +269,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="frontend_lib-error"
             >
-              <option value="" disabled>
-                Select a frontend library
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -303,8 +303,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="fullstack_fram-error"
             >
-              <option value="" disabled>
-                Select a fullstack framework
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -337,8 +337,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="styling-error"
             >
-              <option value="" disabled>
-                Select a styling tool
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -371,8 +371,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="component_library-error"
             >
-              <option value="" disabled>
-                Select a component library
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -405,8 +405,8 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               defaultValue=""
               aria-describedby="databases-error"
             >
-              <option value="" disabled>
-                Select a database
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
@@ -436,11 +436,11 @@ export default function FormProject({ tools }: { tools: Tool[] }) {
               id="Tools"
               name="tools"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              defaultValue=""
+              defaultValue="N/A"
               aria-describedby="tools-error"
             >
-              <option value="" disabled>
-                Select a tool
+              <option value="" className="text-gray-500 dark:text-gray-400">
+                N/A
               </option>
               {tools.map((tool) => (
                 <option key={tool.id} value={tool.id}>
