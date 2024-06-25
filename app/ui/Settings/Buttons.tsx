@@ -1,3 +1,4 @@
+import { deleteProject, deleteTool } from '@/app/lib/actions';
 import { DeleteIcon } from '@/app/ui/icons/DeleteIcon';
 import { EditIcon } from '@/app/ui/icons/EditIcon';
 import { PlusIcon } from '@heroicons/react/24/outline';
@@ -33,23 +34,25 @@ export function UpdateProject({ id }: { id: string }) {
 }
 
 export function DeleteTool({ id }: { id: string }) {
-  // const deleteToolWithId = deleteTool.bind(null, id);
+  const deleteToolWithId = deleteTool.bind(null, id);
   return (
-    // <form action={deleteToolWithId}>
-    <button>
-      {/* <span className="sr-only">Delete</span> */}
-      <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
-    </button>
+    <form action={deleteToolWithId}>
+      <button>
+        <span className="sr-only">Delete</span>
+        <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
+      </button>
+    </form>
   );
 }
 
 export function DeleteProject({ id }: { id: string }) {
-  // const deleteProjectWithId = deleteProject.bind(null, id);
+  const deleteProjectWithId = deleteProject.bind(null, id);
   return (
-    // <form action={deleteProjectWithId}>
-    <button>
-      {/* <span className="sr-only">Delete</span> */}
-      <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
-    </button>
+    <form action={deleteProjectWithId}>
+      <button>
+        <span className="sr-only">Delete</span>
+        <DeleteIcon className="w-5 text-red-600 dark:text-red-500" />
+      </button>
+    </form>
   );
 }
