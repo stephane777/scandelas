@@ -1,12 +1,12 @@
 import { fetchProjects } from '@/app/lib/data';
-import { DeleteTool, UpdateTool } from '../Settings/Buttons';
+import { DeleteProject, UpdateProject } from '@/app/ui/Settings/Buttons';
 
 export default async function ProjectsTab() {
   const projects = await fetchProjects();
 
   return (
     <div className="relative flex justify-center overflow-x-auto">
-      <table className="text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+      <table className="text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
         <thead className="bg-sky-200 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -66,8 +66,8 @@ export default async function ProjectsTab() {
                   }
                 </td>
                 <td className="flex flex-nowrap space-x-3 px-6 py-4">
-                  <UpdateTool id={project.id} />
-                  <DeleteTool id={project.id} />
+                  <UpdateProject id={project.id} />
+                  <DeleteProject id={project.id} />
                 </td>
               </tr>
             );
