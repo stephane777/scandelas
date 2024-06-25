@@ -83,6 +83,7 @@ export default function Header() {
               key="projects"
               // description="projects"
               // startContent={}
+              textValue="tools"
             >
               <Link color="foreground" href="/settings/projects">
                 Projects
@@ -90,6 +91,7 @@ export default function Header() {
             </DropdownItem>
             <DropdownItem
               key="tools"
+              textValue="Tools"
               // description="tools"
               // startContent={}
             >
