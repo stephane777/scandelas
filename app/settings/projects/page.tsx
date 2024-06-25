@@ -1,10 +1,11 @@
+import ProjectsTab from '@/app/ui/Projects/Table';
+
 import Search from '@/app/ui/Search';
 import { CreateButton } from '@/app/ui/Settings/Buttons';
-import ProjectsTab from '@/app/ui/Settings/ProjectsTab';
 import { ProjectTableSkeleton } from '@/app/ui/Skeletons';
 import { Suspense } from 'react';
 
-export default async function Page() {
+export default async function Page({ params }: { params: string }) {
   return (
     <main className="mx-auto min-h-screen max-w-6xl p-6">
       <section className="flex-column items-center pt-16">
