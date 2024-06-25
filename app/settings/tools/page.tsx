@@ -1,7 +1,7 @@
 import { fetchToolsPages } from '@/app/lib/data';
 import Search from '@/app/ui/Search';
 import { CreateButton } from '@/app/ui/Settings/Buttons';
-// import ToolTab from '@/app/ui/Settings/ToolsTab';
+
 import ToolsPagination from '@/app/ui/Tools/Paginations';
 import Table from '@/app/ui/Tools/Table';
 import { Suspense } from 'react';

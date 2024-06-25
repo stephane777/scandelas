@@ -5,7 +5,7 @@ import { CreateButton } from '@/app/ui/Settings/Buttons';
 import { ProjectTableSkeleton } from '@/app/ui/Skeletons';
 import { Suspense } from 'react';
 
-export default async function Page({ params }: { params: string }) {
+export default async function Page() {
   return (
     <main className="mx-auto min-h-screen max-w-6xl p-6">
       <section className="flex-column items-center pt-16">
