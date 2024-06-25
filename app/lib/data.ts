@@ -120,3 +120,21 @@ export async function fetchToolById(id: string) {
     throw new Error(`Failed to fetch tool with id: ${id}.`);
   }
 }
+
+export async function fetchProjectById(id: string) {
+  noStore();
+  try {
+    const data = await sql<Project>`
+      SELECT
+       *
+      FROM sc_projects as p
+      WHERE p.id = ${id}
+    `;
+    const project = data.rows;
+
+    return project[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error(`Failed to fetch project with id: ${id}.`);
+  }
+}
