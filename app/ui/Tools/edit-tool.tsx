@@ -1,5 +1,6 @@
 'use client';
 
+import { updateTool } from '@/app/lib/actions';
 import { Tool } from '@/app/lib/definitions';
 // import { createTool } from '@/app/lib/actions';
 import { Square3Stack3DIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
@@ -7,8 +8,10 @@ import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
 export default function EditToolForm({ tool }: { tool: Tool }) {
+  const updateToolWithId = updateTool.bind(null, tool.id);
+
   return (
-    <form action={''} className="flex justify-center">
+    <form action={updateToolWithId} className="flex justify-center">
       <div className="mt-24 w-[400px] rounded-md bg-gray-50 p-6 dark:bg-gray-700">
         {/* NAME */}
         <div className="mb-4">
@@ -74,7 +77,7 @@ export default function EditToolForm({ tool }: { tool: Tool }) {
             Cancel
           </Link>
           <Button type="submit" color="primary">
-            Create Tool
+            Update Tool
           </Button>
         </div>
       </div>
