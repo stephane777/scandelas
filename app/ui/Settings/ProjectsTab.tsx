@@ -4,7 +4,7 @@ export default async function ProjectsTab() {
   const projects = await fetchProjects();
   return (
     <div className="relative flex justify-center overflow-x-auto">
-      <table className="text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400">
+      <table className="text-left text-sm text-gray-500 dark:text-gray-400 rtl:text-right">
         <thead className="bg-sky-200 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -22,9 +22,9 @@ export default async function ProjectsTab() {
             <th scope="col" className="px-6 py-3 text-center">
               url
             </th>
-            <th scope="col" className="px-6 py-3 text-center">
+            {/* <th scope="col" className="px-6 py-3 text-center">
               actions
-            </th>
+            </th> */}
           </tr>
         </thead>
         <tbody className="h-56 overflow-scroll">
@@ -63,7 +63,7 @@ export default async function ProjectsTab() {
                     </a>
                   }
                 </td>
-                <td className="space-x-3 px-6 py-4">
+                {/* <td className="space-x-3 px-6 py-4">
                   <a
                     href="#"
                     className="font-medium text-blue-600 hover:underline dark:text-blue-500"
@@ -76,7 +76,7 @@ export default async function ProjectsTab() {
                   >
                     Delete
                   </a>
-                </td>
+                </td> */}
               </tr>
             );
           })}

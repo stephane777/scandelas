@@ -1,5 +1,6 @@
 'use client';
 // import { createProject } from '@/app/lib/actions';
+import type { StateProject } from '@/app/lib/actions';
 import { updateProject } from '@/app/lib/actions';
 import type { Project, Tool } from '@/app/lib/definitions';
 import { GithubIcon } from '@/app/ui/icons/GithubIcon';
@@ -11,11 +12,15 @@ import {
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
-export default function EditFormProject({ tools, project }: { tools: Tool[]; project: Project }) {
-  const updateProjectWithId = updateProject.bind(null, project.id);
+import { useFormState } from 'react-dom';
 
+export default function EditFormProject({ tools, project }: { tools: Tool[]; project: Project }) {
+  const initialState: StateProject = { message: null, errors: {} };
+
+  const updateProjectWithId = updateProject.bind(null, project.id);
+  const [state, dispatch] = useFormState(updateProjectWithId, initialState);
   return (
-    <form action={updateProjectWithId} className="flex justify-center">
+    <form action={dispatch} className="flex justify-center">
       <div className="mt-24 w-[400px] rounded-md bg-gray-50 p-6 dark:bg-gray-700">
         {/* NAME */}
         <div className="mb-4">
@@ -38,12 +43,12 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </div>
           </div>
           <div id="name-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.name &&
+              state.errors.name.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         {/**DESCRIPTION */}
@@ -65,12 +70,12 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             />
           </div>
           <div id="description-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.description &&
+              state.errors.description.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         {/** GITHUB LINK */}
@@ -94,12 +99,12 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </div>
           </div>
           <div id="github_link-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.github_link &&
+              state.errors.github_link.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         {/** PROD URL  */}
@@ -123,12 +128,12 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </div>
           </div>
           <div id="url-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.url &&
+              state.errors.url.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         {/** IMAGE URL */}
@@ -152,12 +157,12 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </div>
           </div>
           <div id="img_url-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.img_url &&
+              state.errors.img_url.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
       </div>
@@ -173,7 +178,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="bundler"
               defaultValue={project.bundler}
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2"
-              aria-describedby="bundler-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -186,14 +190,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="bundler-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** TEST RUNNER*/}
@@ -207,7 +203,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="test_runner"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.test_runner}
-              aria-describedby="test_runner-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -220,14 +215,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="test_runner-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** END TO END */}
@@ -241,7 +228,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="e2e"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.e2e}
-              aria-describedby="e2e-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -254,14 +240,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="e2e-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** FRONTEND LIBRARY*/}
@@ -275,7 +253,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="frontend_lib"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.frontend_lib}
-              aria-describedby="frontend_lib-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -288,14 +265,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="frontend_lib-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** FULLSTACK FRAMEWORK*/}
@@ -309,7 +278,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="fullstack_fram"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.fullstack_fram}
-              aria-describedby="fullstack_fram-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -322,14 +290,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="fullstack_fram-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** STYLING */}
@@ -343,7 +303,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="styling"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.styling}
-              aria-describedby="styling-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -356,14 +315,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="styling-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** COMPONENT LIBRARY */}
@@ -377,7 +328,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="component_library"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.component_library}
-              aria-describedby="component_library-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -390,14 +340,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="component_library-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** DATABASES */}
@@ -411,7 +353,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="database"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.database}
-              aria-describedby="databases-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -424,14 +365,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="database-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         {/** TOOLS*/}
@@ -445,7 +378,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
               name="tools"
               className="peer block w-full cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               defaultValue={project.tools}
-              aria-describedby="tools-error"
             >
               <option value="" className="text-gray-500 dark:text-gray-400">
                 N/A
@@ -458,14 +390,6 @@ export default function EditFormProject({ tools, project }: { tools: Tool[]; pro
             </select>
 
             <ArchiveBoxArrowDownIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 dark:text-gray-300 dark:peer-focus:text-gray-300" />
-          </div>
-          <div id="tools-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.customerId &&
-              state.errors.customerId.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))} */}
           </div>
         </div>
         <div className="mt-6 flex justify-end gap-4">

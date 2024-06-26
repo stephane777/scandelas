@@ -12,17 +12,17 @@ import { z } from 'zod';
 
 const ToolFormSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  version: z.string(),
+  name: z.string({ invalid_type_error: 'Please enter a valid name' }).min(1),
+  version: z.string({ invalid_type_error: 'Please envter a valid version format' }).min(3).max(8),
 });
 
 const ProjectFormSchema = z.object({
   id: z.string(),
-  name: z.string(),
-  description: z.string(),
-  github_link: z.string().url(),
-  url: z.string().url({ message: 'Invalid url' }),
-  img_url: z.string().url(),
+  name: z.string({ invalid_type_error: 'Please enter a project name' }).min(1),
+  description: z.string({ invalid_type_error: 'Please enter a project name' }).min(10),
+  github_link: z.string({ invalid_type_error: 'Please enter a valid github link' }).url(),
+  url: z.string({ invalid_type_error: 'Please enter a valid url' }).url(),
+  img_url: z.string({ invalid_type_error: 'Please enter a valid url' }).url(),
   bundler: z.string().nullable(),
   test_runner: z.string().nullable(),
   e2e: z.string().nullable(),
@@ -40,20 +40,52 @@ const UpdateTool = ToolFormSchema.omit({ id: true });
 const UpdateProject = ProjectFormSchema.omit({ id: true });
 
 // This is temporary until @types/react-dom is updated
-export type State = {
+export type StateTool = {
   errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
+    name?: string[];
+    version?: string[];
   };
   message?: string | null;
 };
 
-export async function createTool(formData: FormData) {
-  const { name, version } = CreateTool.parse({
+export type StateProject = {
+  message?: string | null;
+  errors?: {
+    name?: string[];
+    description?: string[];
+    github_link?: string[];
+    url?: string[];
+    img_url?: string[];
+    bundler?: string[];
+    test_runner?: string[];
+    e2e?: string[];
+    frontend_lib?: string[];
+    fullstack_fram?: string[];
+    styling?: string[];
+    component_library?: string[];
+    database?: string[];
+    tools?: string[];
+  };
+};
+
+export async function createTool(prevState: StateTool, formData: FormData) {
+  // const { name, version } = CreateTool.safeParse({
+  const validatedFields = CreateTool.safeParse({
     name: formData.get('tool'),
     version: formData.get('version'),
   });
+
+  console.dir(validatedFields);
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create tool.',
+    };
+  }
+
+  const { name, version } = validatedFields.data;
+
   try {
     await sql`
       INSERT INTO sc_tools (name, version)
@@ -62,17 +94,27 @@ export async function createTool(formData: FormData) {
   } catch (error) {
     return { message: `Database Error: Failed to create tool ${name}` };
   }
+
   revalidatePath('settings/tools');
   redirect('/settings/tools');
 }
 
-export async function createProject(formData: FormData) {
+export async function createProject(prevState: StateProject, formData: FormData) {
   {
     /** Tip: If you're working with forms that have many fields,
          you may want to consider using the entries() method with JavaScript's Object.fromEntries().
          For example: const rawFormData = Object.fromEntries(formData.entries()) */
   }
-  console.dir(Object.fromEntries(formData.entries()));
+
+  const validatedFields = CreateProject.safeParse(Object.fromEntries(formData.entries()));
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Project.',
+    };
+  }
+
   const {
     name,
     description,
@@ -88,7 +130,8 @@ export async function createProject(formData: FormData) {
     component_library,
     database,
     tools,
-  } = CreateProject.parse(Object.fromEntries(formData.entries()));
+  } = validatedFields.data;
+
   try {
     await sql`
       INSERT INTO sc_projects (name, description, github_link, url, img_url, bundler, test_runner, e2e, frontend_lib, fullstack_fram, styling, component_library, database, tools)
@@ -97,15 +140,25 @@ export async function createProject(formData: FormData) {
   } catch (error) {
     return { message: `Database Error: Failed to create project ${name}` };
   }
+
   revalidatePath('/settings/projects');
   redirect('/settings/projects');
 }
 
-export async function updateTool(id: string, formData: FormData) {
-  const { name, version } = UpdateTool.parse({
+export async function updateTool(id: string, prevState: StateTool, formData: FormData) {
+  const validatedFields = UpdateTool.safeParse({
     name: formData.get('tool'),
     version: formData.get('version'),
   });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Project.',
+    };
+  }
+  const { name, version } = validatedFields.data;
+
   try {
     await sql`
     UPDATE sc_tools
@@ -120,25 +173,8 @@ export async function updateTool(id: string, formData: FormData) {
   redirect('/settings/tools');
 }
 
-export async function updateProject(id: string, formData: FormData) {
-  console.log('updateProject id: ', id);
-  console.dir('formData: ', formData);
-  const {
-    name,
-    description,
-    github_link,
-    url,
-    img_url,
-    bundler,
-    test_runner,
-    e2e,
-    frontend_lib,
-    fullstack_fram,
-    styling,
-    component_library,
-    database,
-    tools,
-  } = UpdateProject.parse({
+export async function updateProject(id: string, prevState: StateProject, formData: FormData) {
+  const validatedFields = UpdateProject.safeParse({
     name: formData.get('name'),
     description: formData.get('description'),
     github_link: formData.get('github_link'),
@@ -154,6 +190,29 @@ export async function updateProject(id: string, formData: FormData) {
     database: formData.get('database'),
     tools: formData.get('tools'),
   });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Project.',
+    };
+  }
+  const {
+    name,
+    description,
+    github_link,
+    url,
+    img_url,
+    bundler,
+    test_runner,
+    e2e,
+    frontend_lib,
+    fullstack_fram,
+    styling,
+    component_library,
+    database,
+    tools,
+  } = validatedFields.data;
 
   try {
     await sql`
