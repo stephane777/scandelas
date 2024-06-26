@@ -1,13 +1,19 @@
 'use client';
 
+import type { StateTool } from '@/app/lib/actions';
 import { createTool } from '@/app/lib/actions';
 import { Square3Stack3DIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 import { Button } from '@nextui-org/react';
 import Link from 'next/link';
 
+import { useFormState } from 'react-dom';
+
 export default function FormTool() {
+  const initialState: StateTool = { message: null, errors: {} };
+  const [state, dispatch] = useFormState(createTool, initialState);
+
   return (
-    <form action={createTool} className="flex justify-center">
+    <form action={dispatch} className="flex justify-center">
       <div className="mt-24 w-[400px] rounded-md bg-gray-50 p-6 dark:bg-gray-700">
         {/* NAME */}
         <div className="mb-4">
@@ -28,12 +34,12 @@ export default function FormTool() {
             </div>
           </div>
           <div id="tool-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.name &&
+              state.errors.name.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         {/* VERSION */}
@@ -55,12 +61,12 @@ export default function FormTool() {
             </div>
           </div>
           <div id="version-error" aria-live="polite" aria-atomic="true">
-            {/* {state.errors?.amount &&
-              state.errors.amount.map((error: string) => (
+            {state.errors?.version &&
+              state.errors.version.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
-              ))} */}
+              ))}
           </div>
         </div>
         <div className="mt-6 flex justify-end gap-4">
