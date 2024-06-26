@@ -27,10 +27,7 @@ export default async function Page() {
       </section>
       <section className="flex-column items-center justify-center pt-16">
         <h1 className={`mb-4 flex justify-center text-2xl md:text-2xl`}>Tools</h1>
-        {/* <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-          <Search placeholder="Search tools..." />
-          <CreateTool />
-        </div> */}
+
         <Suspense fallback={<ToolsTableSkeleton />}>
           {/* todo :  mobile view  */}
           <ToolTab />
