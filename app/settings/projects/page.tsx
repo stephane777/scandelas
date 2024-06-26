@@ -13,7 +13,7 @@ export default async function Page() {
         <div className="pb mt-4 flex items-center justify-between gap-2 pb-12 md:mt-8">
           <Suspense>
             <Search placeholder="Search projects..." />
-            <CreateButton pathToCreate={'/settings/projects/create'} name={'create project'} />
+            <CreateButton pathToCreate={'/settings/projects/create'} name={'Create project'} />
           </Suspense>
         </div>
         <Suspense fallback={<ProjectTableSkeleton />}>
