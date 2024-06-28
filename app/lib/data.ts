@@ -25,10 +25,7 @@ export async function fetchTools() {
 export async function fetchProjects() {
   noStore(); // prevent the response from being cached.
   try {
-    console.log('Fetching projects');
     // await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    console.log('Projects fetched!');
 
     const data = await sql<Project>`
           SELECT 
@@ -136,5 +133,18 @@ export async function fetchProjectById(id: string) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error(`Failed to fetch project with id: ${id}.`);
+  }
+}
+
+export async function getCodeWarsProfile() {
+  try {
+    const res = await fetch(`${process.env.CODEWARS_URL}/${process.env.CODEWARS_USER}`);
+    if (!res.ok) {
+      throw new Error(`Fetching codewars profile failed with status:${res.status}`);
+    }
+    return res.json()
+  } catch (error) {
+    console.error('Failed to load data from codewars');
+    throw new Error('Failed to fetch codewars profile');
   }
 }
