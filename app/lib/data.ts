@@ -138,11 +138,13 @@ export async function fetchProjectById(id: string) {
 
 export async function getCodeWarsProfile() {
   try {
-    const res = await fetch(`${process.env.CODEWARS_URL}/${process.env.CODEWARS_USER}`);
+    const res = await fetch(`${process.env.CODEWARS_URL}/${process.env.CODEWARS_USER}`, {
+      cache: 'no-cache',
+    });
     if (!res.ok) {
       throw new Error(`Fetching codewars profile failed with status:${res.status}`);
     }
-    return res.json()
+    return res.json();
   } catch (error) {
     console.error('Failed to load data from codewars');
     throw new Error('Failed to fetch codewars profile');
