@@ -243,6 +243,12 @@ export async function updateProject(id: string, prevState: StateProject, formDat
 
 export async function deleteTool(id: string) {
   // throw new Error('Failed Failed Failed');
+
+  /*   Attempt to delete a tool which is referenced in a master table won't trigger an error from @vercel/postgres
+  it will return a 200 status and deletion is aborted
+  
+  */
+
   try {
     await sql`DELETE FROM sc_tools WHERE id =${id}`;
   } catch (error) {
