@@ -50,7 +50,7 @@ export default async function Home() {
           </p>
         </div>
       </section>
-      <section className="container mx-auto w-[1200px]">
+      <section className="container mx-auto w-[1000px]">
         <h1 className="my-12 bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-6xl font-bold text-transparent">
           Codewars
         </h1>
@@ -64,7 +64,7 @@ export default async function Home() {
           />
 
           <div>
-            <p className={clsx(monserrat.className, 'text-xl')}>
+            <p className={clsx(monserrat.className, 'text-base leading-8 tracking-wide')}>
               I couldn&apos;t not to mention codewars in this page as it was part of my journey at
               the start. Codewars is a coding challenge platform which helps you to learn, train &
               improve your coding skills. The difficulty for a kata (challenge) is divided by 8
@@ -104,11 +104,11 @@ export default async function Home() {
 
         {/* <div>{JSON.stringify(codewarsData)} </div> */}
         {/* <div>{`username: ${codewarsData.username}`}</div> */}
-        <div className="flex flex-row justify-center gap-16 pt-24">
+        <div className="flex flex-row justify-center gap-12 pt-24">
           <div className="flex-col items-center rounded-md border-2 border-gray-400 p-6">
             <SparklesIcon title="honor" className="pointer-events-none mx-auto block h-16 w-16" />
-            <h2 className="text-2xl font-bold">Honor</h2>
-            <div className="flex justify-center text-6xl font-extrabold">{codewarsData.honor}</div>
+            <h2 className="text-xl font-bold">Honor</h2>
+            <div className="flex justify-center text-4xl font-extrabold">{codewarsData.honor}</div>
           </div>
 
           <div className="flex-col items-center rounded-md border-2 border-gray-400 p-6">
@@ -116,8 +116,8 @@ export default async function Home() {
               title="Leaderboard Position"
               className="pointer-events-none mx-auto block h-16 w-16"
             />
-            <h2 className="text-2xl font-bold">Leaderboard </h2>
-            <div className="flex justify-center text-6xl font-extrabold">
+            <h2 className="text-xl font-bold">Leaderboard </h2>
+            <div className="flex justify-center text-4xl font-extrabold">
               {codewarsData.leaderboardPosition}
             </div>
           </div>
@@ -127,8 +127,8 @@ export default async function Home() {
               title="Ranks name"
               className="pointer-events-none mx-auto block h-16 w-16"
             />
-            <h2 className="text-2xl font-bold">Ranks name</h2>
-            <div className="flex justify-center text-6xl font-extrabold">
+            <h2 className="text-xl font-bold">Ranks name</h2>
+            <div className="flex justify-center text-4xl font-extrabold">
               {' '}
               {codewarsData.ranks.overall.name}
             </div>
@@ -138,8 +138,8 @@ export default async function Home() {
               title="Ranks score"
               className="pointer-events-none mx-auto block h-16 w-16"
             />
-            <h2 className="text-2xl font-bold">Ranks score</h2>
-            <div className="flex justify-center text-6xl font-extrabold">
+            <h2 className="text-xl font-bold">Ranks score</h2>
+            <div className="flex justify-center text-4xl font-extrabold">
               {codewarsData.ranks.overall.score}
             </div>
           </div>
@@ -149,8 +149,8 @@ export default async function Home() {
               title="Total Completed"
               className="pointer-events-none mx-auto block h-16 w-16"
             />
-            <h2 className="text-2xl font-bold">Total completed</h2>
-            <div className="flex justify-center text-6xl font-extrabold">
+            <h2 className="text-xl font-bold">Total completed</h2>
+            <div className="flex justify-center text-4xl font-extrabold">
               {codewarsData.codeChallenges.totalCompleted}
             </div>
           </div>
