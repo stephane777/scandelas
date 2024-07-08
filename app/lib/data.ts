@@ -146,6 +146,7 @@ export async function getCodeWarsProfile() {
     }
     return res.json();
   } catch (error) {
+    console.error(error);
     console.error('Failed to load data from codewars');
     throw new Error('Failed to fetch codewars profile');
   }

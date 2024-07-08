@@ -12,6 +12,13 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    CODEWARS_URL: 'https://www.codewars.com/api/v1/users/',
+    CODEWARS_USER: 'stephane777',
+    CODEWARS_SOLVED:
+      'https://www.codewars.com/api/v1/users/${CODEWARS_USER}/code-challenges/completed',
+    CODEWARS_KATA: 'https://www.codewars.com/kata/',
+  },
 };
 
 export default nextConfig;
