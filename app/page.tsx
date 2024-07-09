@@ -51,9 +51,21 @@ export default async function Home() {
         </div>
       </section>
       <section className="container mx-auto w-[1000px]">
-        <h1 className="my-12 bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-6xl font-bold text-transparent">
-          Codewars
-        </h1>
+        <h1 className="my-12 text-6xl font-bold">About</h1>
+        <p className={clsx(monserrat.className, 'text-base leading-8 tracking-wide')}>
+          Hi, I am Stephane, french software engineer based in London. I have over 2 decades of
+          experience working in IT as developer for most of positions. I mainly worked on the
+          frontend with the support of cloud solutions like AWS & GCP for the past few years.
+        </p>
+      </section>
+      <section className="container mx-auto w-[1000px]">
+        <h1 className="my-12 text-6xl font-bold">Sources</h1>
+      </section>
+      <section className="container mx-auto w-[1000px]">
+        <h1 className="my-12 text-6xl font-bold">This</h1>
+      </section>
+      <section className="container mx-auto w-[1000px]">
+        <h1 className="my-12 text-6xl font-bold">Codewars</h1>
         <div className="flex flex-row justify-center gap-14">
           <Image
             src="/codewars.png"
