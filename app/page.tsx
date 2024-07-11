@@ -52,10 +52,10 @@ export default async function Home() {
       </section>
       <section className="container mx-auto w-[1000px]">
         <h1 className="my-12 text-6xl font-bold">About</h1>
-        <p className={clsx(monserrat.className, 'text-base leading-8 tracking-wide')}>
-          Hi, I am Stephane, french software engineer based in London. I have over 2 decades of
-          experience working in IT as developer for most of positions. I mainly worked on the
-          frontend with the support of cloud solutions like AWS & GCP for the past few years.
+        <p className={clsx(monserrat.className, 'prose-p text-base leading-8 tracking-wide')}>
+          Hi, I am french software engineer based in London. I have over 2 decades of experience
+          working in IT as developer. I mainly worked on the frontend with the support of cloud
+          solutions like AWS & GCP for the past few years.
         </p>
       </section>
       <section className="container mx-auto w-[1000px]">
