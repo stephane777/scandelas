@@ -10,6 +10,12 @@ const nextConfig = {
         port: '',
         pathname: '/users/stephane777/badges/**',
       },
+      {
+        protocol: 'https',
+        hostname: '**/www.credly.com', //https://www.credly.com/badges/802f1d9c-a6bf-4e30-9d8d-375acd9ba6e4/public_url
+        port: '',
+        pathname: '/badges/**',
+      },
     ],
   },
   env: {
