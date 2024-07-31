@@ -40,9 +40,8 @@ export default function Header() {
       <NavbarContent className="pr-3 md:hidden" justify="center">
         <NavbarBrand>
           {/* <p className="font-bold text-inherit ">S.CANDELAS _</p> */}
-          <h3 className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-4xl font-bold text-transparent">
-            S.CANDELAS _
-          </h3>
+          {/* <h3 className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-4xl font-bold text-transparent"> */}
+          <h3 className="text-4xl font-bold">S.CANDELAS _</h3>
         </NavbarBrand>
       </NavbarContent>
 
@@ -52,9 +51,8 @@ export default function Header() {
           <Link color="foreground" href="/">
             {/* <p className="text-2xl font-bold text-inherit">S.CANDELAS _</p>
              */}
-            <h3 className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-4xl font-bold text-transparent">
-              S.CANDELAS _
-            </h3>
+            {/* <h3 className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-4xl font-bold text-transparent"> */}
+            <h3 className="text-4xl">S.CANDELAS _</h3>
           </Link>
         </NavbarBrand>
 
