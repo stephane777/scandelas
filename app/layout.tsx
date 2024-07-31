@@ -1,6 +1,7 @@
 import '@/app/ui/globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 import { Providers } from '@/app/providers';
 import Footer from '@/app/ui/Footer/Footer';
@@ -25,6 +26,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </Providers>
+        <Script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js" />
       </body>
     </html>
   );
