@@ -1,4 +1,6 @@
 import { getCodeWarsProfile } from '@/app/lib/data';
+import About from '@/app/ui/Home/About/About';
+import { CertificatesAndCompletions } from '@/app/ui/Home/CertificatesAndCompletions/Certificates';
 import { monserrat } from '@/app/ui/fonts';
 import {
   ArrowTrendingUpIcon,
@@ -8,6 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
+
 /**
  * To allow svg with next/image component the next.config.mjs had to be updated
  * with dangerouslyAllowSVG
@@ -17,55 +20,77 @@ export default async function Home() {
   const codewarsData = await getCodeWarsProfile();
   return (
     <main className="min-h-screen">
-      <section className="container mx-auto flex flex-row justify-center gap-36 py-80">
+      <section className="container mx-auto flex flex-row justify-center gap-36 py-52">
         <div className="relative flex justify-end">
           <Image
             src="/stephane_2.png"
-            width={250}
-            height={250}
+            width={200}
+            height={200}
             alt={'profile image'}
-            className="z-10 rounded-full border-8 border-gray-900"
+            className="border-6 z-10 rounded-full border-gray-900 grayscale"
           ></Image>
 
-          <div className="absolute -left-3 -top-3 h-[17rem] w-[17rem] rounded-full bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3]"></div>
+          {/* <div className="absolute -left-3 -top-3 h-[17rem] w-[17rem] rounded-full bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3]"></div> */}
+          <div className="absolute -left-3 -top-3 h-[14rem] w-[14rem] rounded-full border-1 border-slate-600 bg-slate-800"></div>
         </div>
         <div className="flex flex-col items-start">
           <span className="text-2xl">Hi 👋, I am Stephane</span>
           <p
             className={clsx(
               monserrat.className,
-              'flex justify-start text-pretty text-7xl font-bold'
+              'flex justify-start text-pretty text-6xl font-bold'
             )}
           >
             {' '}
             Full Stack
           </p>
 
-          <p className={clsx(monserrat.className, 'flex justify-start text-8xl font-bold')}>
+          <p className={clsx(monserrat.className, 'flex justify-start text-6xl font-bold')}>
             {' '}
-            <span className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-8xl font-bold text-transparent">
+            <span className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-6xl font-bold text-transparent">
               Dev
             </span>
             eloper _
           </p>
         </div>
       </section>
-      <section className="container mx-auto w-[1000px]">
-        <h1 className="my-12 text-6xl font-bold">About</h1>
-        <p className={clsx(monserrat.className, 'prose-p text-base leading-8 tracking-wide')}>
-          Hi, I am french software engineer based in London. I have over 2 decades of experience
-          working in IT as developer. I mainly worked on the frontend with the support of cloud
-          solutions like AWS & GCP for the past few years.
-        </p>
+      <section className="container mx-auto w-[800px]">
+        <h2 className="my-12 text-4xl font-bold">About</h2>
+        <About />
       </section>
-      <section className="container mx-auto w-[1000px]">
-        <h1 className="my-12 text-6xl font-bold">Sources</h1>
+      <section className="container mx-auto mt-32 w-[800px]">
+        <h1 className="my-12 text-4xl font-bold">Sources</h1>
       </section>
-      <section className="container mx-auto w-[1000px]">
-        <h1 className="my-12 text-6xl font-bold">This</h1>
+      <div className="bg-slate-100 py-24 dark:bg-slate-800">
+        <section className="container mx-auto max-w-[1600px]">
+          <div className="container mx-auto w-[800px]">
+            <h1 className="mb-24 text-4xl font-bold">Certificates & courses completion</h1>
+          </div>
+          <div className="flex max-w-[1600px] flex-wrap justify-center lg:gap-24">
+            {CertificatesAndCompletions}
+          </div>
+        </section>
+      </div>
+
+      <section className="container mx-auto mt-32 w-[800px]">
+        <h1 className="my-12 text-4xl font-bold">What colleague say</h1>
       </section>
-      <section className="container mx-auto w-[1000px]">
-        <h1 className="my-12 text-6xl font-bold">Codewars</h1>
+
+      <section className="container mx-auto mt-32 w-[800px]">
+        <h1 className="my-12 text-4xl font-bold">Calendy - Book a call</h1>
+        {/* Check Calendly API's documentation : https://developer.calendly.com/getting-started */}
+      </section>
+
+      <section className="container mx-auto mt-32 w-[800px]">
+        <h1 className="my-12 text-4xl font-bold">Download a pdf</h1>
+      </section>
+
+      <section className="container mx-auto mt-32 w-[800px]">
+        <h1 className="my-12 text-4xl font-bold">This</h1>
+      </section>
+
+      <section className="container mx-auto mt-32 w-[1000px]">
+        <h1 className="my-12 text-4xl font-bold">Codewars</h1>
         <div className="flex flex-row justify-center gap-14">
           <Image
             src="/codewars.png"
