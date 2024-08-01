@@ -11,7 +11,14 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from '@nextui-org/navbar';
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from '@nextui-org/react';
 import Link from 'next/link';
 import React from 'react';
 // import {  Button} from "@nextui-org/react";
@@ -39,6 +46,7 @@ export default function Header() {
 
       <NavbarContent className="pr-3 md:hidden" justify="center">
         <NavbarBrand>
+          <Avatar isBordered src="/stephane_2.png" />
           {/* <p className="font-bold text-inherit ">S.CANDELAS _</p> */}
           {/* <h3 className="bg-gradient-to-t from-[#232b72] via-[#5495df] to-[#d2dee3] bg-clip-text text-4xl font-bold text-transparent"> */}
           <h3 className="text-4xl font-bold">S.CANDELAS _</h3>
@@ -47,7 +55,7 @@ export default function Header() {
 
       <NavbarContent className="hidden w-full gap-4 md:flex" justify="center">
         <NavbarBrand>
-          {/* <AcmeLogo /> */}
+          <Avatar isBordered src="/stephane_2.png" className="mr-4 grayscale" />
           <Link color="foreground" href="/">
             {/* <p className="text-2xl font-bold text-inherit">S.CANDELAS _</p>
              */}
