@@ -5,7 +5,7 @@ import type {
 
 export const certificate_data: CertificateProps[] = [
   {
-    heading: 'Querying Microsoft SQL Server 2012/2014',
+    heading: 'Querying Microsoft SQL Server 2012/14',
     text: 'Querying Microsoft SQL Server 2012/2014 validates the skills and knowledge necessary to create database objects, work with and modify data, as well as troubleshoot and optimize queries.',
     href: 'https://www.credly.com/badges/802f1d9c-a6bf-4e30-9d8d-375acd9ba6e4/embedded',
     list: ['Create database object', 'Work with data', 'Modify data', 'Troubleshoot and optimize'],
