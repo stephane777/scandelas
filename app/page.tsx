@@ -66,7 +66,7 @@ export default async function Home() {
           <div className="container mx-auto w-[800px]">
             <h1 className="mb-24 text-4xl font-bold">Certificates & courses completion</h1>
           </div>
-          <div className="flex max-w-[1600px] flex-wrap justify-center lg:gap-24">
+          <div className="flex max-w-[1600px] flex-wrap justify-center lg:gap-4">
             {CertificatesAndCompletions}
           </div>
         </section>
